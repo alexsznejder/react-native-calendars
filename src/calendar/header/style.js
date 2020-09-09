@@ -1,4 +1,4 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, Dimensions} from 'react-native';
 import * as defaultStyle from '../../style';
 
 const STYLESHEET_ID = 'stylesheet.calendar.header';
@@ -7,6 +7,7 @@ export default function(theme={}) {
   const appStyle = {...defaultStyle, ...theme};
   return StyleSheet.create({
     header: {
+      width: Dimensions.get('window').width - 40,
       flexDirection: 'row',
       justifyContent: 'space-between',
       paddingLeft: 10,
@@ -41,13 +42,13 @@ export default function(theme={}) {
       tintColor: appStyle.disabledArrowColor
     },
     week: {
-      marginTop: 7,
+      width: Dimensions.get('window').width - 140,
+      alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-around'
     },
     dayHeader: {
-      marginTop: 2,
-      marginBottom: 7,
+      marginBottom: -5,
       width: 32,
       textAlign: 'center',
       fontSize: appStyle.textDayHeaderFontSize,

@@ -391,7 +391,7 @@ class Calendar extends Component {
     return (
       <GestureComponent {...gestureProps}>
         <View
-          style={[this.style.container, this.props.style]}
+          style={[this.style.container, this.props.style, {width: ReactNative.Dimensions.get('window').width - 40, alignItems: 'center'}]}
           accessibilityElementsHidden={this.props.accessibilityElementsHidden} // iOS
           importantForAccessibility={this.props.importantForAccessibility} // Android
         >
@@ -399,7 +399,7 @@ class Calendar extends Component {
             ? <CustomHeader {...headerProps}/>
             : <CalendarHeader {...headerProps}/>
           }
-          <View style={this.style.monthView}>{weeks}</View>
+          <View style={[this.style.monthView, {width: ReactNative.Dimensions.get('window').width - 140}]}>{weeks}</View>
         </View>
       </GestureComponent>
     );

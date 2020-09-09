@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {ActivityIndicator, Platform} from 'react-native';
+import {ActivityIndicator, Platform, Dimensions} from 'react-native';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import XDate from 'xdate';
 import PropTypes from 'prop-types';
@@ -155,7 +155,6 @@ class CalendarHeader extends Component {
           onPress={this.onPressLeft}
           disabled={this.props.disableArrowLeft}
           style={this.style.arrow}
-          hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
           testID={testID ? `${CHANGE_MONTH_LEFT_ARROW}-${testID}`: CHANGE_MONTH_LEFT_ARROW}
         >
           {this.props.renderArrow
@@ -171,7 +170,6 @@ class CalendarHeader extends Component {
           onPress={this.onPressRight}
           disabled={this.props.disableArrowRight}
           style={this.style.arrow}
-          hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
           testID={testID ? `${CHANGE_MONTH_RIGHT_ARROW}-${testID}`: CHANGE_MONTH_RIGHT_ARROW}
         >
           {this.props.renderArrow
@@ -192,7 +190,7 @@ class CalendarHeader extends Component {
     return (
       <View
         testID={testID}
-        style={this.props.style}
+        style={[this.props.style, { width: Dimensions.get('window').width - 40, alignItems: 'center'}]}
         accessible
         accessibilityRole={'adjustable'}
         accessibilityActions={[
@@ -204,12 +202,14 @@ class CalendarHeader extends Component {
         importantForAccessibility={this.props.importantForAccessibility} // Android
       >
         <View style={this.style.header}>
-          {leftArrow}
           <View style={this.style.headerContainer}>
             {this.renderHeader()}
             {indicator}
           </View>
-          {rightArrow}
+          <View style={{flexDirection: 'row'}}>
+            {leftArrow}
+            {rightArrow}
+          </View>
         </View>
         {!this.props.hideDayNames &&
           <View style={this.style.week}>

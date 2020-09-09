@@ -9,7 +9,7 @@ export default function styleConstructor(theme={}) {
     dot: {
       width: 4,
       height: 4,
-      marginTop: 1,
+      marginTop: -8,
       borderRadius: 2,
       opacity: 0,
       ...appStyle.dotStyle
@@ -19,7 +19,7 @@ export default function styleConstructor(theme={}) {
       backgroundColor: appStyle.dotColor
     },
     selectedDot: {
-      backgroundColor: appStyle.selectedDotColor
+      backgroundColor: appStyle.dayTextColor
     },
     disabledDot: {
       backgroundColor: appStyle.disabledDotColor || appStyle.dotColor
